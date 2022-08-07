@@ -3,10 +3,10 @@
 //8 -> 2, 4, 6, 8
 
 Console.WriteLine("Введите число: ");
-int numberN = Convert.ToInt32(Console.ReadLine());
+int input_number = Convert.ToInt32(Console.ReadLine());
 
 int number = 1;
-while(number <= numberN)
+while(number <= input_number)
 {
     if(number % 2 == 0)
     {

@@ -4,26 +4,47 @@
 // [1 2 3 4 5] -> 5 8 3
 // [6 7 3 6] -> 36 21
 
-int[] array = new int[5];
-for (int i = 0; i < array.Length; i++)
-{
-    array[i] = new Random().Next(1, 10);
-}
-Console.WriteLine("[{0}]", string.Join(", ", array));
+// int[] array = new int[5];
+// for (int i = 0; i < array.Length; i++)
+// {
+//     array[i] = new Random().Next(1, 10);
+// }
+// Console.WriteLine("[{0}]", string.Join(", ", array));
 
-int len = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(array.Length)/2));
-int[] newArray = new int[len];
+// int len = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(array.Length)/2));
+// int[] newArray = new int[len];
 
-for (int i = 0; i < len; i++)
-    {
-        if (array.Length % 2 != 0 && i == len - 1)
-        {
-            newArray[i] = array[i];
-        }
-        else 
-        {
-            newArray[i] = array[i] * array[array.Length - 1 - i];
-        }
-    }
-Console.WriteLine("[{0}]", string.Join(", ", newArray));
+// for (int i = 0; i < len; i++)
+//     {
+//         if (array.Length % 2 != 0 && i == len - 1)
+//         {
+//             newArray[i] = array[i];
+//         }
+//         else 
+//         {
+//             newArray[i] = array[i] * array[array.Length - 1 - i];
+//         }
+//     }
+// Console.WriteLine("[{0}]", string.Join(", ", newArray));
 
+
+Console.Write("Введите элементы массива через пробел: "); 
+string elements = Console.ReadLine(); 
+int[] baseArray = GetArrayFromString(elements); 
+Console.WriteLine(String.Join(" ", ResultArray(baseArray))); 
+
+int[] GetArrayFromString(string stringArray) 
+{ string[] nums = stringArray.Split(" ", StringSplitOptions.RemoveEmptyEntries); 
+int[] res = new int[nums.Length]; 
+for (int i = 0; i < nums.Length; i++) 
+{ res[i] = int.Parse(nums[i]); } 
+return res; } 
+
+int[] ResultArray(int[] array) 
+{ int size = array.Length / 2; 
+if (array.Length % 2 == 1) size++; 
+int[] result = new int[size]; 
+for (int i = 0; i < array.Length / 2; i++) 
+{ result[i] = array[i] * array[array.Length - 1 - i]; } 
+if (array.Length % 2 == 1) result[size-1] = array[array.Length / 2]; 
+return result; }

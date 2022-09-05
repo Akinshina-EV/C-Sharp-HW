@@ -29,33 +29,33 @@ int column = 4;
 int[,] spiral = new int[row,column];
 
 int number = 1;
-int count = row * column;
+int countNumber = row * column;
     
-int rmin = 0, rmax = row - 1;
-int cmin = 0, cmax = column - 1;
+int rowMin = 0, rowMax = row - 1;
+int columnMin = 0, columnMax = column - 1;
 
-while (number <= count) 
+while (number <= countNumber) 
 {
-    for (int i = cmin; number <= count && i <= cmax; i++) 
+    for (int i = columnMin; number <= countNumber && i <= columnMax; i++) 
     {
-        spiral[rmin, i] = number++;
+        spiral[rowMin, i] = number++;
     }
-    rmin++;
-    for (int i = rmin; number <= count && i <= rmax; i++) 
+    rowMin++;
+    for (int i = rowMin; number <= countNumber && i <= rowMax; i++) 
     {
-        spiral[i, cmax] = number++;
+        spiral[i, columnMax] = number++;
     }
-    cmax--;
-    for (int i = cmax; number <= count && i >= cmin; i--) 
+    columnMax--;
+    for (int i = columnMax; number <= countNumber && i >= columnMin; i--) 
     {
-        spiral[rmax, i] = number++;
+        spiral[rowMax, i] = number++;
     }
-    rmax--;
-    for (int i = rmax; number <= count && i >= rmin; i--) 
+    rowMax--;
+    for (int i = rowMax; number <= countNumber && i >= rowMin; i--) 
     {
-        spiral[i, cmin] = number++;
+        spiral[i, columnMin] = number++;
     }
-    cmin++;
+    columnMin++;
     }
 
 PrintMatrix(spiral);
